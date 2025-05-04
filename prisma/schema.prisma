@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String?   // nếu sau này bạn muốn login thủ công
+  events    Event[]
+
+   // Google OAuth fields
+  googleId                String?  @unique
+  googleAccessToken       String?
+  googleRefreshToken      String?
+  googleTokenExpiresAt    DateTime?
+  googleCalendarId        String?  // optional nếu bạn tạo calendar riêng
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model Event {
+  id                      String   @id @default(cuid())
+  title                   String
+  description             String?
+  solarDate               DateTime
+  lunarDate               String?
+  isLunar                 Boolean
+  reminderMinutesBefore   Int
+  googleCalendarEventId   String?
+  userId                  String                              // Foreign key
+  user                    User     @relation(fields: [userId], references: [id])
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}

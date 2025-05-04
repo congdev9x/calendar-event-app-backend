@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+package-lock.json
+
+# Environment variables
+.env
+.env.*.local
+
+# Prisma
+prisma/dev.db
+prisma/*.sqlite
+.prisma/
+
+# TS
+*.tsbuildinfo
+
+# Editor configs
+.vscode/
+.idea/
+*.swp
+
+# MacOS
+.DS_Store
