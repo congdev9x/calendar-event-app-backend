@@ -1,4 +1,4 @@
-## 🗖 Calendar Event App – Backend
+## 📆 Calendar Event App – Backend
 
 API backend cho ứng dụng quản lý sự kiện theo lịch Dương và Âm lịch, hỗ trợ người dùng cá nhân hóa và đồng bộ hóa với Google Calendar.
 
